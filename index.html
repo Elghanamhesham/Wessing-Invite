@@ -87,6 +87,24 @@
     font-weight: bold;
     min-height: 24px;
   }
+  .floating-emoji {
+    position: fixed;
+    bottom: -50px;
+    font-size: 32px;
+    pointer-events: none;
+    animation: floatUp 2.5s ease-in forwards;
+    z-index: 999;
+  }
+  @keyframes floatUp {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
 </style>
 </head>
 <body>
@@ -113,6 +131,28 @@
       el.textContent = attending
         ? "Yay! Can't wait to celebrate with you! 💍"
         : "We'll miss you, but thank you for letting us know! 💌";
+
+      if (attending) {
+        launchEmojis();
+      }
+    }
+
+    function launchEmojis() {
+      const emojis = ['🥳', '🎉', '💍', '💕', '🎊', '✨'];
+      const count = 30;
+
+      for (let i = 0; i < count; i++) {
+        setTimeout(() => {
+          const emoji = document.createElement('div');
+          emoji.className = 'floating-emoji';
+          emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+          emoji.style.left = Math.random() * 100 + 'vw';
+          emoji.style.animationDuration = (2 + Math.random() * 1.5) + 's';
+          document.body.appendChild(emoji);
+
+          setTimeout(() => emoji.remove(), 4000);
+        }, i * 60);
+      }
     }
   </script>
 </body>
