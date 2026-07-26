@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're Invited!</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #fdf6f0, #f3e0e0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 20px;
+  }
+  .card {
+    background: #fffaf5;
+    border-radius: 20px;
+    padding: 40px 30px;
+    max-width: 420px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  h1 {
+    color: #b5495b;
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+  .warning {
+    font-size: 15px;
+    color: #7a5c58;
+    font-style: italic;
+    margin-bottom: 25px;
+  }
+  .names {
+    font-size: 34px;
+    color: #7a1f3d;
+    font-weight: bold;
+    margin: 15px 0;
+  }
+  .amp {
+    color: #d8a25a;
+    font-size: 28px;
+    margin: 0 8px;
+  }
+  .details {
+    font-size: 17px;
+    color: #555;
+    margin: 20px 0;
+    line-height: 1.6;
+  }
+  img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 12px;
+    margin: 20px 0;
+  }
+  .buttons {
+    margin-top: 25px;
+  }
+  button {
+    padding: 12px 28px;
+    margin: 8px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .yes {
+    background: #b5495b;
+    color: white;
+  }
+  .no {
+    background: #eee;
+    color: #555;
+  }
+  button:hover {
+    transform: scale(1.08);
+  }
+  #response {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #7a1f3d;
+    font-weight: bold;
+    min-height: 24px;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <p class="warning">⚠️ Warning: Attending this wedding may cause excessive crying, dancing, and eating. 😂</p>
+    <h1>You're Invited to the Wedding of</h1>
+    <div class="names">Ahmed <span class="amp">&amp;</span> Hagar</div>
+    <img src="https://media.giphy.com/media/z8XX6UhqTsmp5IQUip/giphy.gif" alt="wedding celebration gif">
+    <div class="details">
+      📅 Save the Date<br>
+      📍 Cairo<br>
+      Come celebrate the beginning of forever with us!
+    </div>
+    <div class="buttons">
+      <button class="yes" onclick="respond(true)">Yes, I'll be there! 🎉</button>
+      <button class="no" onclick="respond(false)">Can't make it 😢</button>
+    </div>
+    <div id="response"></div>
+  </div>
+
+  <script>
+    function respond(attending) {
+      const el = document.getElementById('response');
+      el.textContent = attending
+        ? "Yay! Can't wait to celebrate with you! 💍"
+        : "We'll miss you, but thank you for letting us know! 💌";
+    }
+  </script>
+</body>
+</html>
