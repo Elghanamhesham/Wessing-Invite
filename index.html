@@ -113,4 +113,41 @@
       Happy Birthday to my favorite person in the whole world. I love you more than words (and definitely more than cake, and that's saying a lot).
     </div>
     <div class="buttons">
-      
+      <button class="yes" onclick="respond(true)">I love you! 🥳</button>
+      <button class="no" onclick="respond(false)">Aw stop it 🙈</button>
+    </div>
+    <div id="response"></div>
+  </div>
+
+  <script>
+    function respond(attending) {
+      const el = document.getElementById('response');
+      el.textContent = attending
+        ? "Happy birthday to the love of my life! 💕"
+        : "Too late, I already love you 😘";
+
+      if (attending) {
+        launchEmojis();
+      }
+    }
+
+    function launchEmojis() {
+      const emojis = ['🥳', '🎉', '💍', '💕', '🎊', '✨'];
+      const count = 30;
+
+      for (let i = 0; i < count; i++) {
+        setTimeout(() => {
+          const emoji = document.createElement('div');
+          emoji.className = 'floating-emoji';
+          emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+          emoji.style.left = Math.random() * 100 + 'vw';
+          emoji.style.animationDuration = (2 + Math.random() * 1.5) + 's';
+          document.body.appendChild(emoji);
+
+          setTimeout(() => emoji.remove(), 4000);
+        }, i * 60);
+      }
+    }
+  </script>
+</body>
+</html>
